@@ -1,0 +1,980 @@
+// Variables
+$primary-color: #ffffff;        // White for light background
+$accent-color: #ff0000;         // Red for accents
+$text-color: #000000;           // Black for text
+$highlight-color: #0033a0;      // Blue for logo/highlights
+$hover-color: #ff0000;          // Red for hover
+
+// Global Styles
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+// Navbar Styles
+.navbar {
+  background: linear-gradient(90deg, $primary-color 70%, rgba($highlight-color, 0.1) 100%);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: $highlight-color !important;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $hover-color !important;
+    }
+  }
+
+  .navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+
+    &:focus {
+      outline: none;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='$text-color' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    &[aria-expanded="true"] {
+      transform: rotate(90deg);
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      position: relative;
+      color: $text-color !important;
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin: 0 1.2rem;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+
+      &:hover,
+      &.active {
+        color: $accent-color !important;
+
+        &::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          background: $accent-color;
+          bottom: 0;
+          left: 0;
+          transform: scaleX(1);
+          transform-origin: bottom right;
+          transition: transform 0.3s ease;
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: $accent-color;
+        bottom: 0;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease;
+      }
+    }
+
+    .btn-primary {
+      background-color: $accent-color;
+      border-color: $accent-color;
+      color: $primary-color;
+      font-weight: 600;
+      padding: 0.5rem 1.5rem;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($accent-color, 10%);
+        border-color: darken($accent-color, 10%);
+      }
+    }
+  }
+}
+
+// Responsive Styles
+@media (max-width: 991.98px) {
+  .navbar {
+    padding: 1rem;
+
+    .navbar-nav {
+      background-color: $primary-color;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      animation: slideIn 0.3s ease-in-out;
+
+      .nav-link {
+        margin: 0.75rem 0;
+        font-size: 1.1rem;
+
+        &::after {
+          display: none; // Remove underline on mobile
+        }
+      }
+
+      .btn-primary {
+        margin: 1rem auto;
+        display: block;
+        width: fit-content;
+      }
+    }
+  }
+
+  .navbar-brand {
+    font-size: 1.8rem;
+
+    .navbar-logo {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+// Animation for mobile menu
+@keyframes slideIn {
+  from {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+// Hero Section
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url('../../image/heroimg.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  
+    .hero-overlay {
+      background: rgba($text-color, 0.5); // Dark overlay for readability
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+  
+    .hero-logo {
+      width: 300px;
+      height: 100px;
+      margin-bottom: 1.5rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+  
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: $primary-color;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+  
+    .hero-subtitle {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: $primary-color;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeIn 1.4s ease-in-out;
+    }
+  
+    .btn-primary {
+      background-color: $accent-color;
+      border-color: $accent-color;
+      color: $primary-color;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      font-size: 1.2rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      animation: fadeIn 1.6s ease-in-out;
+  
+      &:hover {
+        background-color: darken($accent-color, 10%);
+        border-color: darken($accent-color, 10%);
+        transform: translateY(-2px);
+      }
+    }
+  }
+  
+  // Animations
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  // Responsive Styles
+  @media (max-width: 991.98px) {
+    .hero {
+      height: 80vh;
+  
+      .hero-title {
+        font-size: 2.5rem;
+      }
+  
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+  
+      .hero-logo {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .hero {
+      .hero-title {
+        font-size: 2rem;
+      }
+  
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+  
+      .btn-primary {
+        padding: 0.5rem 1.5rem;
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  // Animation for mobile menu
+  @keyframes slideIn {
+    from {
+      transform: translateY(-10%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+// About Us Section
+.about-us {
+  padding: 5rem 0;
+  background-color: $primary-color;
+
+  .section-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: $accent-color;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    animation: fadeIn 1s ease-in-out;
+    letter-spacing: 1px;
+  }
+
+  .company-profile {
+    margin-bottom: 3.5rem;
+    padding: 1.5rem;
+    border-left: 4px solid $highlight-color;
+    background-color: lighten($primary-color, 5%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    animation: fadeIn 1.2s ease-in-out;
+
+    p {
+      font-size: 1.15rem;
+      color: $text-color;
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  .section-subtitle {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $highlight-color;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: fadeIn 1.4s ease-in-out;
+
+    &::after {
+      content: "";
+      flex-grow: 1;
+      height: 2px;
+      background-color: $highlight-color;
+      opacity: 0.7;
+    }
+  }
+
+  .owners {
+    margin-bottom: 3rem;
+
+    .owner {
+      animation: fadeIn 1.6s ease-in-out;
+      padding: 1.5rem;
+      background-color: lighten($primary-color, 4%);
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+      h4 {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: $text-color;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        font-size: 1.05rem;
+        color: $text-color;
+        line-height: 1.7;
+      }
+    }
+  }
+
+  .client-list {
+    animation: fadeIn 1.8s ease-in-out;
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        font-size: 1.05rem;
+        color: $text-color;
+        margin-bottom: 0.6rem;
+        position: relative;
+        padding-left: 1.5rem;
+
+        &::before {
+          content: '\f058'; // Font Awesome check-circle
+          font-family: 'Font Awesome 6 Free';
+          font-weight: 900;
+          color: $highlight-color;
+          position: absolute;
+          left: 0;
+        }
+
+        &:hover {
+          color: $accent-color;
+          transition: color 0.3s ease;
+        }
+      }
+    }
+  }
+
+  .btn-primary {
+    background-color: $accent-color;
+    border-color: $accent-color;
+    color: $primary-color;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 2s ease-in-out;
+
+    &:hover {
+      background-color: darken($accent-color, 10%);
+      border-color: darken($accent-color, 10%);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive Styles
+@media (max-width: 991.98px) {
+  .about-us {
+    padding: 3rem 0;
+
+    .section-title {
+      font-size: 2.2rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.6rem;
+    }
+
+    .owners .owner {
+      margin-bottom: 2rem;
+    }
+
+    .client-list .col-md-6 {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .about-us {
+    .section-title {
+      font-size: 1.9rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.4rem;
+    }
+
+    .company-profile p {
+      font-size: 1rem;
+    }
+
+    .owners .owner h4 {
+      font-size: 1.3rem;
+    }
+
+    .client-list ul li {
+      font-size: 0.95rem;
+    }
+  }
+
+  .btn-primary {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+// Mobile Menu Animation
+@keyframes slideIn {
+  from {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+// Our Services Section
+.our-services {
+    padding: 6rem 0;
+    background: $primary-color;
+  
+    .section-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: $accent-color;
+      text-align: center;
+      margin-bottom: 3rem;
+      text-shadow: 1px 1px 2px rgba($text-color, 0.1);
+      animation: slideUp 1s ease-in-out;
+    }
+  
+    .service-card {
+      background: $primary-color;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba($text-color, 0.1);
+      text-align: center;
+      min-height: 500px; // Fixed height for uniformity
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: slideUp 1.2s ease-in-out;
+  
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba($text-color, 0.15);
+      }
+  
+      .service-icon {
+        font-size: 2.5rem;
+        color: $highlight-color;
+        margin-bottom: 1.5rem;
+        transition: color 0.3s ease;
+  
+        .service-card:hover & {
+          color: $accent-color;
+        }
+      }
+  
+      .service-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: $text-color;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+  
+        span[dir="rtl"] {
+          display: block;
+          font-size: 1.2rem;
+          color: $text-color;
+        }
+      }
+  
+      .service-desc {
+        font-size: 1rem;
+        color: $text-color;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex-grow: 1; // Ensures description takes available space
+      }
+  
+      .btn-primary {
+        background-color: $accent-color;
+        border-color: $accent-color;
+        color: $primary-color;
+        font-weight: 700;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.1rem;
+        border-radius: 25px;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        margin-top: auto; // Pushes button to the bottom
+  
+        &:hover {
+          background-color: darken($accent-color, 15%);
+          border-color: darken($accent-color, 15%);
+          transform: scale(1.05);
+          box-shadow: 0 4px 12px rgba($text-color, 0.3);
+        }
+      }
+    }
+  }
+  
+  // Animations
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  // Responsive Styles
+  @media (max-width: 991.98px) {
+    .our-services {
+      padding: 4rem 0;
+  
+      .section-title {
+        font-size: 2.5rem;
+      }
+  
+      .service-card {
+        min-height: 300px;
+        padding: 1.5rem;
+  
+        .service-icon {
+          font-size: 2rem;
+        }
+  
+        .service-title {
+          font-size: 1.4rem;
+  
+          span[dir="rtl"] {
+            font-size: 1.1rem;
+          }
+        }
+  
+        .service-desc {
+          font-size: 0.9rem;
+        }
+      }
+  }
+  
+  @media (max-width: 576px) {
+    .our-services {
+      padding: 3rem 0;
+  
+      .section-title {
+        font-size: 2rem;
+      }
+  
+      .service-card {
+        min-height: 280px;
+        padding: 1rem;
+  
+        .service-icon {
+          font-size: 1.8rem;
+        }
+  
+        .service-title {
+          font-size: 1.3rem;
+  
+          span[dir="rtl"] {
+            font-size: 1rem;
+          }
+        }
+  
+        .service-desc {
+          font-size: 0.85rem;
+        }
+  
+        .btn-primary {
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+        }
+      }
+  }
+}
+  }
+
+
+  // Contact Section
+.contact {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, $primary-color 70%, rgba($highlight-color, 0.05) 100%);
+  
+    .section-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: $accent-color;
+      text-align: center;
+      margin-bottom: 3rem;
+      text-shadow: 1px 1px 2px rgba($text-color, 0.1);
+      animation: slideUp 1s ease-in-out;
+    }
+  
+    .contact-form {
+      .form-control {
+        border-radius: 10px;
+        border: 1px solid lighten($text-color, 60%);
+        padding: 0.75rem;
+        font-size: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  
+        &:focus {
+          border-color: $highlight-color;
+          box-shadow: 0 0 5px rgba($highlight-color, 0.3);
+          outline: none;
+        }
+  
+        &::placeholder {
+          color: lighten($text-color, 40%);
+        }
+      }
+  
+      textarea {
+        resize: none;
+      }
+  
+      .btn-primary {
+        background-color: $accent-color;
+        border-color: $accent-color;
+        color: $primary-color;
+        font-weight: 700;
+        padding: 0.75rem 2rem;
+        font-size: 1.2rem;
+        border-radius: 25px;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        animation: slideUp 1.6s ease-in-out;
+  
+        &:hover {
+          background-color: darken($accent-color, 15%);
+          border-color: darken($accent-color, 15%);
+          transform: scale(1.05);
+          box-shadow: 0 4px 12px rgba($text-color, 0.3);
+        }
+      }
+    }
+  
+    .contact-info {
+      background: $primary-color;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba($text-color, 0.1);
+      animation: slideUp 1.4s ease-in-out;
+  
+      .section-subtitle {
+        font-size: 2rem;
+        font-weight: 700;
+        color: $highlight-color;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+  
+        &::after {
+          content: '';
+          height: 3px;
+          width: 60px;
+          background: linear-gradient(to right, $highlight-color, transparent);
+          border-radius: 2px;
+        }
+      }
+  
+      ul {
+        li {
+          font-size: 1.1rem;
+          color: $text-color;
+          margin-bottom: 1.5rem;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+  
+          .contact-icon {
+            font-size: 1.5rem;
+            color: $highlight-color;
+          }
+        }
+      }
+    }
+  }
+  
+  // Footer Section
+  .footer {
+    background-color: $text-color;
+    color: $primary-color;
+    padding: 4rem 0 2rem;
+  
+    .footer-brand {
+      .footer-logo {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+      }
+  
+      h4 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: $highlight-color;
+        margin-bottom: 1rem;
+      }
+  
+      p {
+        font-size: 1rem;
+        color: lighten($primary-color, 80%);
+        line-height: 1.6;
+      }
+    }
+  
+    .footer-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: $highlight-color;
+      margin-bottom: 1.5rem;
+    }
+  
+    .footer-links {
+      li {
+        margin-bottom: 0.75rem;
+  
+        a {
+          color: lighten($primary-color, 80%);
+          font-size: 1.1rem;
+          text-decoration: none;
+          transition: color 0.3s ease;
+  
+          &:hover {
+            color: $accent-color;
+          }
+        }
+      }
+    }
+  
+    .social-icons {
+      display: flex;
+      gap: 1.5rem;
+  
+      a {
+        color: lighten($primary-color, 80%);
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+  
+        &:hover {
+          color: $accent-color;
+        }
+      }
+    }
+  
+    .footer-bottom {
+      border-top: 1px solid lighten($text-color, 20%);
+      padding-top: 2rem;
+      margin-top: 2rem;
+      text-align: center;
+  
+      p {
+        font-size: 0.9rem;
+        color: lighten($primary-color, 60%);
+        margin: 0;
+      }
+    }
+  }
+  
+  // Animations
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  // Responsive Styles
+  @media (max-width: 991.98px) {
+    .contact {
+      padding: 4rem 0;
+  
+      .section-title {
+        font-size: 2.5rem;
+      }
+  
+      .contact-info {
+        padding: 1.5rem;
+  
+        .section-subtitle {
+          font-size: 1.8rem;
+          gap: 1rem;
+  
+          &::after {
+            width: 50px;
+          }
+        }
+  
+        ul li {
+          font-size: 1rem;
+        }
+      }
+    }
+  
+    .footer {
+      padding: 3rem 0 1.5rem;
+  
+      .footer-brand h4 {
+        font-size: 1.6rem;
+      }
+  
+      .footer-title {
+        font-size: 1.4rem;
+      }
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .contact {
+      padding: 3rem 0;
+  
+      .section-title {
+        font-size: 2rem;
+      }
+  
+      .contact-form {
+        .form-control {
+          font-size: 0.9rem;
+          padding: 0.5rem;
+        }
+  
+        .btn-primary {
+          padding: 0.5rem 1.5rem;
+          font-size: 1rem;
+        }
+      }
+  
+      .contact-info {
+        padding: 1rem;
+  
+        .section-subtitle {
+          font-size: 1.5rem;
+          gap: 0.8rem;
+  
+          &::after {
+            width: 40px;
+          }
+        }
+  
+        ul li {
+          font-size: 0.9rem;
+  
+          .contact-icon {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  
+    .footer {
+      padding: 2rem 0 1rem;
+  
+      .footer-brand {
+        text-align: center;
+  
+        .footer-logo {
+          width: 40px;
+          height: 40px;
+        }
+  
+        h4 {
+          font-size: 1.4rem;
+        }
+  
+        p {
+          font-size: 0.9rem;
+        }
+      }
+  
+      .footer-title {
+        font-size: 1.3rem;
+        text-align: center;
+      }
+  
+      .footer-links {
+        text-align: center;
+  
+        li a {
+          font-size: 1rem;
+        }
+      }
+  
+      .social-icons {
+        justify-content: center;
+  
+        a {
+          font-size: 1.3rem;
+        }
+      }
+  
+      .footer-bottom p {
+        font-size: 0.8rem;
+      }
+    }
+  }
