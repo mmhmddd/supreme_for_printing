@@ -33,17 +33,22 @@ $hover-color: #ff0000;          // Red for hover
   }
 
   .navbar-toggler {
-    border: none;
-    padding: 0.5rem;
-    transition: transform 0.3s ease;
+    background-color: red; /* Sets the button background to red */
+    border: none; /* Removes default border, if any */
+    padding: 10px;
 
     &:focus {
       outline: none;
     }
 
     .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='$text-color' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    }
+        display: inline-block;
+        width: 30px; /* Width of the icon */
+        height: 20px; /* Height of the icon */
+        position: relative;
+        background: none;
+        }
+        
 
     &[aria-expanded="true"] {
       transform: rotate(90deg);
@@ -252,7 +257,7 @@ $hover-color: #ff0000;          // Red for hover
       }
   
       .hero-logo {
-        width: 80px;
+        width: 200px;
         height: 80px;
       }
     }
